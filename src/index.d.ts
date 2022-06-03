@@ -4,7 +4,7 @@
 - age - число
 - gender - 'male' или 'female'
  */
-export function getPersons();
+export function getPersons(): TUser[];
 
 /*
 Типизируйте функцию personToString, возвращающую строку и принимающую объект одного из следующих форматов:
@@ -18,4 +18,14 @@ export function getPersons();
    - gender - 'male' или 'female'
    - company- строка
  */
-export function personToString(person);
+type TUser = {
+    name: string;
+    age: number;
+    gender: 'male' | 'female';
+};
+
+type TEmployee = TUser & { company: string };
+
+type TPerson = TUser | TEmployee;
+
+export function personToString(person: TPerson): string;
